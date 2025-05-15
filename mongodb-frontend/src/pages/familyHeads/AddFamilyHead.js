@@ -77,7 +77,7 @@ const AddFamilyHead = () => {
   return (
     <Container>
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Add New Family Head</h2>
+        <h2>Add New Member</h2>
         <Button
           variant="secondary"
           onClick={() => navigate("/dashboard/family-heads")}

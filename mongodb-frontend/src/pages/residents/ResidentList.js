@@ -156,7 +156,7 @@ const ResidentList = () => {
                   <th>Age</th>
                   <th>Address</th>
                   <th>Contact</th>
-                  <th>Family Head</th>
+                  <th>4Ps Head</th>
                   <th>Actions</th>
                 </tr>
               </thead>

@@ -200,7 +200,7 @@ const SystemTools = () => {
                   className={activeTab === "system" ? "active bg-light" : ""}
                   onClick={() => setActiveTab("system")}
                 >
-                  <FaTools className="me-2" /> System Maintenance
+                  <FaTools className="me-2" />
                 </Nav.Link>
               </Nav>
             </Card.Body>

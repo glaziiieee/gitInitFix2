@@ -98,7 +98,7 @@ const MainLayout = () => {
             <FaBullhorn className="nav-icon" />
             <span className="nav-text">Announcements</span>
           </Nav.Link>
-
+{/* 
           <Nav.Link
             as={Link}
             to="/dashboard/events-management"
@@ -108,7 +108,7 @@ const MainLayout = () => {
           >
             <FaCalendarAlt className="nav-icon" />
             <span className="nav-text">Events</span>
-          </Nav.Link>
+          </Nav.Link> */}
 
           <Nav.Link
             as={Link}
@@ -140,7 +140,7 @@ const MainLayout = () => {
             <span className="nav-text">Dashboard</span>
           </Nav.Link>
 
-          <Nav.Link
+          {/* <Nav.Link
             as={Link}
             to={`/dashboard/residents/view/${currentUser.residentId}`}
             className={`nav-link-custom ${
@@ -151,7 +151,7 @@ const MainLayout = () => {
           >
             <FaIdCard className="nav-icon" />
             <span className="nav-text">My Profile</span>
-          </Nav.Link>
+          </Nav.Link> */}
 
           <Nav.Link
             as={Link}

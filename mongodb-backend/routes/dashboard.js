@@ -19,19 +19,19 @@ router.use(authenticateToken);
 router.get("/stats", async (req, res) => {
   try {
     // Get counts
-    const [totalResidents, total4PsMembers] = await Promise.all([
+    const [totalResidents, totalFamilyHeads] = await Promise.all([
       Resident.countDocuments(),
-      fourPsMember.countDocuments(),
+      FamilyHead.countDocuments(),
     ]);
 
     // Get all residents and family heads for analysis
-    const [residents, fourPsMember] = await Promise.all([
+    const [residents, familyHeads] = await Promise.all([
       Resident.find().select("-qrCode"),
-      fourPsMember.find().select("-qrCode"),
+      FamilyHead.find().select("-qrCode"),
     ]);
 
     // Combine both for demographic analysis
-    const allPeople = [...residents, ...fourPsMember];
+    const allPeople = [...residents, ...familyHeads];
 
     // Gender distribution
     const genderCounts = {};
@@ -121,12 +121,12 @@ router.get("/stats", async (req, res) => {
         id: p.residentId || p.headId,
         name: `${p.firstName} ${p.lastName}`,
         date: p.registrationDate,
-        type: p.type || (p.residentId ? "Resident" : "4Ps Member"),
+        type: p.type || (p.residentId ? "Resident" : "Family Head"),
       }));
 
     res.json({
       totalResidents,
-      total4PsMembers,
+      totalFamilyHeads,
       genderData,
       ageData,
       monthlyRegistrations: monthlyData,

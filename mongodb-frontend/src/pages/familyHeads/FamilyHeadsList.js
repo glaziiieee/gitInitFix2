@@ -113,9 +113,9 @@ const FamilyHeadsList = () => {
   return (
     <Container>
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Family Heads</h2>
+        <h2>4Ps Members</h2>
         <Link to="/dashboard/family-heads/add" className="btn btn-primary">
-          <FaPlus className="me-2" /> Add New Family Head
+          <FaPlus className="me-2" /> Add New Member
         </Link>
       </div>
 
@@ -143,7 +143,7 @@ const FamilyHeadsList = () => {
             </Col>
             <Col md={6} className="text-end">
               <span className="text-muted">
-                Total Family Heads:{" "}
+                Total Family 4Ps Members:{" "}
                 <strong>{filteredFamilyHeads.length}</strong>
               </span>
             </Col>

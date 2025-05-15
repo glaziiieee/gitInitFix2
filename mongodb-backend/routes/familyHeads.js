@@ -13,17 +13,17 @@ const Resident = require("../models/Resident");
 router.use(authenticateToken);
 
 // Helper function to generate a unique family head ID
-const generateFourPsMemberId = async () => {
+const generateFamilyHeadId = async () => {
   const currentYear = new Date().getFullYear();
-  const count = await FourPsMember.countDocuments();
+  const count = await FamilyHead.countDocuments();
   return `F-${currentYear}${(count + 1).toString().padStart(3, "0")}`;
 };
 
 // Get all family heads (admin only)
 router.get("/", isAdmin, async (req, res) => {
   try {
-    const fourPsMember = await FourPsMember.find({}, "-qrCode");
-    res.json(fourPsMembers);
+    const familyHeads = await FamilyHead.find({}, "-qrCode");
+    res.json(familyHeads);
   } catch (error) {
     console.error("Error getting member:", error);
     res.status(500).json({ error: "Server error" });
@@ -34,13 +34,13 @@ router.get("/", isAdmin, async (req, res) => {
 router.get("/:id", isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
-    const fourPsMember = await FourPsMember.findOne({ headId: id }, "-qrCode");
+    const familyHead = await FamilyHead.findOne({ headId: id }, "-qrCode");
 
-    if (!fourPsMember) {
+    if (!familyHead) {
       return res.status(404).json({ error: "Member not found" });
     }
 
-    res.json(fourPsMember);
+    res.json(familyHead);
   } catch (error) {
     console.error(`Error getting member ${req.params.id}:`, error);
     res.status(500).json({ error: "Server error" });
@@ -51,19 +51,19 @@ router.get("/:id", isAdmin, async (req, res) => {
 router.get("/:id/qrcode", isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
-    const fourPsMember = await FourPsMember.findOne({ headId: id });
+    const familyHead = await FamilyHead.findOne({ headId: id });
 
-    if (!fourPsMember) {
+    if (!familyHead) {
       return res.status(404).json({ error: "Member not found" });
     }
 
     // If QR code doesn't exist yet, generate it
-    if (!fourPsMember.qrCode) {
+    if (!familyHead.qrCode) {
       // Create data for QR code
       const qrData = {
-        id: fourPsMember.memberId,
-        name: `${fourPsMember.firstName} ${fourPsMember.lastName}`,
-        type: "4Ps Member",
+        id: familyHead.headId,
+        name: `${familyHead.firstName} ${familyHead.lastName}`,
+        type: "Family Head",
         verified: true,
       };
 
@@ -71,11 +71,11 @@ router.get("/:id/qrcode", isAdmin, async (req, res) => {
       const qrCodeDataUrl = await QRCode.toDataURL(JSON.stringify(qrData));
 
       // Save QR code to family head record
-      fourPsMember.qrCode = qrCodeDataUrl;
-      await fourPsMember.save();
+      familyHead.qrCode = qrCodeDataUrl;
+      await familyHead.save();
     }
 
-    res.json({ qrCode: fourPsMember.qrCode });
+    res.json({ qrCode: familyHead.qrCode });
   } catch (error) {
     console.error(`Error getting member QR code ${req.params.id}:`, error);
     res.status(500).json({ error: "Server error" });
@@ -88,17 +88,17 @@ router.get("/:id/members", isAdmin, async (req, res) => {
     const { id } = req.params;
 
     // Check if family head exists
-    const fourPsMember = await FourPsMember.findOne({ headId: id });
-    if (!fourPsMember) {
+    const familyHead = await FamilyHead.findOne({ headId: id });
+    if (!familyHead) {
       return res.status(404).json({ error: "Member not found" });
     }
 
     // Get members
-    const members = await Resident.find({ fourPsMemberId: id }, "-qrCode");
+    const members = await Resident.find({ familyHeadId: id }, "-qrCode");
 
     res.json(members);
   } catch (error) {
-    console.error(`Error getting 4Ps members for ${req.params.id}:`, error);
+    console.error(`Error getting family members for ${req.params.id}:`, error);
     res.status(500).json({ error: "Server error" });
   }
 });
@@ -141,14 +141,14 @@ router.post(
     }
 
     try {
-      console.log("Creating 4Ps member with data:", req.body);
+      console.log("Creating family head with data:", req.body);
 
       // Generate unique family head ID
-      const headId = await generateFourPsMemberId();
-      console.log("Generated 4Ps Member ID:", headId);
+      const headId = await generateFamilyHeadId();
+      console.log("Generated Family Head ID:", headId);
 
       // Create new family head
-      const newFourPsMember = new FourPsMember({
+      const newFamilyHead = new FamilyHead({
         headId,
         firstName: req.body.firstName.trim(),
         lastName: req.body.lastName.trim(),
@@ -157,7 +157,7 @@ router.post(
         address: req.body.address.trim(),
         contactNumber: req.body.contactNumber.trim(),
         registrationDate: new Date(),
-        type: "4Ps Member",
+        type: "Family Head",
       });
 
       // Save family head

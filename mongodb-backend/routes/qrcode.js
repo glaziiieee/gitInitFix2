@@ -4,7 +4,7 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const { authenticateToken, isAdmin } = require("../middleware/auth");
 const QRCode = require("qrcode");
-
+``
 // Import models
 const Resident = require("../models/Resident");
 const FamilyHead = require("../models/FamilyHead");
