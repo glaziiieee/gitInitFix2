@@ -1,0 +1,95 @@
+/* Update src/index.css - Remove header-related styles */
+
+/* Auth Pages - Modal Style */
+.auth-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-modal {
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.form-control {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-right: 0;
+  border-radius: 6px 0 0 6px;
+  padding: 0 12px;
+}
+
+.input-group .form-control {
+  border-left: 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.input-group .form-control:focus {
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1557b0;
+  border-color: #1557b0;
+}
+
+.register-link a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .auth-wrapper {
+    padding: 10px;
+  }
+  
+  .login-modal {
+    max-width: 100%;
+  }
+  
+  .login-card .card-body {
+    padding: 1.5rem 1rem;
+  }
+}

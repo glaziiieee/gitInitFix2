@@ -1,0 +1,300 @@
+/* src/theme.css - Horizontal Navbar with Matcha Green Theme */
+
+:root {
+    /* Main Colors */
+    --pastel-pink: #f8d7db;
+    --pastel-pink-light: #fce4e7;
+    --pastel-pink-dark: #f0b8c0;
+    
+    --matcha-green: #8ab661;
+    --matcha-green-light: #a9c787;
+    --matcha-green-dark: #6c9845;
+    
+    /* Traditional Alert Colors (Unchanged) */
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #0dcaf0;
+    --success: #198754;
+    
+    /* Neutral Colors */
+    --white: #ffffff;
+    --light: #f8f9fa;
+    --dark: #424242;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+    --gray-dark: #343a40;
+  }
+  
+  /* Base Styles */
+  body {
+    background-color: var(--pastel-pink-light);
+    color: var(--dark);
+  }
+  
+  /* Top Navbar Styles - Horizontal Navigation */
+  .top-navbar {
+    background-color: var(--matcha-green) !important;
+    border-bottom: 1px solid var(--matcha-green-dark);
+    padding: 0.5rem 1rem;
+  }
+  
+  .brand-container {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+  }
+  
+  .brand-text {
+    color: var(--white);
+    font-weight: bold;
+  }
+  
+  .main-nav {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  /* Horizontal Navigation Links */
+  .main-nav .nav-link-custom {
+    color: var(--white) !important;
+    padding: 0.75rem 1rem;
+    margin: 0 0.25rem;
+    opacity: 0.9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .main-nav .nav-link-custom:hover {
+    opacity: 1;
+    background-color: var(--matcha-green-dark);
+  }
+  
+  .main-nav .nav-link-custom.active {
+    opacity: 1;
+    background-color: var(--matcha-green-dark);
+    font-weight: 500;
+  }
+  
+  .nav-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .user-menu-toggle {
+    color: var(--white) !important;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--matcha-green-dark) !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+  
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Dropdown Menus */
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+  }
+  
+  .dropdown-header {
+    padding: 0.5rem 1rem;
+    background-color: var(--pastel-pink-light);
+  }
+  
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+  }
+  
+  .dropdown-item:active, .dropdown-item:focus {
+    background-color: var(--matcha-green-light);
+    color: var(--dark);
+  }
+  
+  .dropdown-divider {
+    margin: 0.25rem 0;
+    border-top: 1px solid var(--pastel-pink-light);
+  }
+  
+  /* Main Content Wrapper */
+  .main-content-wrapper {
+    padding-top: 70px;
+    min-height: calc(100vh - 70px);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Responsive Adjustments for Mobile */
+  @media (max-width: 992px) {
+    .main-nav {
+      flex-direction: column;
+    }
+    
+    .main-nav .nav-link-custom {
+      margin: 0.25rem 0;
+    }
+    
+    .brand-container {
+      margin-right: 0;
+    }
+    
+    .navbar-collapse {
+      margin-top: 1rem;
+    }
+  }
+  
+  /* Cards */
+  .card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-header {
+    background-color: var(--pastel-pink);
+    border-bottom: 1px solid var(--pastel-pink-dark);
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    padding: 1rem 1.25rem;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--matcha-green);
+    border-color: var(--matcha-green);
+  }
+  
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--matcha-green-dark) !important;
+    border-color: var(--matcha-green-dark) !important;
+  }
+  
+  .btn-outline-primary {
+    border-color: var(--matcha-green);
+    color: var(--matcha-green);
+  }
+  
+  .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+    background-color: var(--matcha-green) !important;
+    border-color: var(--matcha-green) !important;
+    color: var(--white) !important;
+  }
+  
+  .btn-secondary {
+    background-color: var(--pastel-pink-dark);
+    border-color: var(--pastel-pink-dark);
+  }
+  
+  .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background-color: #e59ca6 !important;
+    border-color: #e59ca6 !important;
+  }
+  
+  /* Form Controls */
+  .form-control:focus {
+    border-color: var(--matcha-green-light);
+    box-shadow: 0 0 0 0.25rem rgba(138, 182, 97, 0.25);
+  }
+  
+  /* Tables */
+  .table thead {
+    background-color: var(--pastel-pink-light);
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: var(--pastel-pink-light);
+  }
+  
+  /* Tabs */
+  .nav-tabs .nav-link.active {
+    color: var(--matcha-green-dark);
+    border-color: var(--pastel-pink-dark) var(--pastel-pink-dark) var(--white);
+  }
+  
+  .nav-tabs .nav-link:hover {
+    border-color: var(--pastel-pink) var(--pastel-pink) var(--pastel-pink-dark);
+  }
+  
+  /* Badge Colors */
+  .bg-primary {
+    background-color: var(--matcha-green) !important;
+  }
+  
+  /* Status Icons */
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+  }
+  
+  /* Auth Pages */
+  .auth-wrapper {
+    background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-pink-dark) 100%);
+  }
+  
+  .login-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dashboard Cards */
+  .stat-card {
+    transition: transform 0.2s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .dashboard-card .card-header {
+    background-color: var(--matcha-green-light);
+  }
+  
+  /* Logo color update */
+  svg path[fill="#1a73e8"] {
+    fill: var(--matcha-green);
+  }
+  
+  /* QR Code display area */
+  .qr-display-area {
+    background-color: var(--white);
+    border: 2px dashed var(--pastel-pink);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Pagination controls */
+  .pagination .page-item.active .page-link {
+    background-color: var(--matcha-green);
+    border-color: var(--matcha-green);
+  }
+  
+  .pagination .page-link {
+    color: var(--matcha-green-dark);
+  }
+  
+  .pagination .page-link:hover {
+    background-color: var(--pastel-pink-light);
+  }
